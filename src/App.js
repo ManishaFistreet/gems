@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './pages/NavBar';
+import CardPrint from './components/Card/CardPrint';
+import QRScanner from './pages/QRScanner';
+import GemstoneForm from './components/Form/GemstoneForm';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Navigate to="/fill" replace />} />
+        <Route path="/fill" element={<GemstoneForm />} />
+        <Route path="/print" element={<CardPrint />} />
+        <Route path="/scan" element={<QRScanner />} />
+      </Routes>
+    </Router>
   );
 }
 
