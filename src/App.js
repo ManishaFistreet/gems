@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navbar from './pages/NavBar';
 import CardPrint from './components/Card/CardPrint';
 import QRScanner from './pages/QRScanner';
-import GemstoneForm from './components/Form/GemstoneForm';
+import GemStoneFormTabs from './components/Form/GemStoneFormTabs';
+import PurchaseList from './pages/PurchaseList';
 
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="/fill" replace />} />
-        <Route path="/fill" element={<GemstoneForm />} />
+        <Route path="/fill" element={<GemStoneFormTabs />} />
         <Route path="/print" element={<CardPrint />} />
+        <Route path='/purchase_list' element= {<PurchaseList />} />
         <Route path="/scan" element={<QRScanner />} />
       </Routes>
     </Router>

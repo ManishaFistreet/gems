@@ -1,5 +1,4 @@
 // src/components/Navbar.js
-import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -14,7 +13,7 @@ function Navbar() {
         <Box>
           <Button color="inherit" component={Link} to="/fill">Fill</Button>
           <Button color="inherit" component={Link} to="/print">Print</Button>
-          {/* <Button color="inherit" component={Link} to="/scan">Scan</Button> */}
+          <Button color="inherit" component={Link} to="/purchase_list">Purchase List</Button>
         </Box>
       </Toolbar>
     </AppBar>
