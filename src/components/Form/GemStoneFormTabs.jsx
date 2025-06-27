@@ -145,22 +145,27 @@ export default function GemStoneFormTabs() {
       let y = 10;
 
       if (currentForm.item_pic) {
-        const img = new Image();
-        img.crossOrigin = "anonymous";
-        img.src = currentForm.item_pic;
+  const img = new Image();
+  img.crossOrigin = "anonymous";
+  img.src = currentForm.item_pic;
 
-        await new Promise((resolve, reject) => {
-          img.onload = () => resolve(null);
-          img.onerror = reject;
-        });
+  await new Promise((resolve, reject) => {
+    img.onload = () => resolve(null);
+    img.onerror = reject;
+  });
 
-        const format = currentForm.item_pic.startsWith("data:image/png")
-          ? "PNG"
-          : "JPEG";
+  const format = currentForm.item_pic.startsWith("data:image/png")
+    ? "PNG"
+    : "JPEG";
 
-        pdf.addImage(img, format, 10, y, 50, 50);
-        y += 60;
-      }
+  const pageWidth = pdf.internal.pageSize.getWidth();
+  const imgWidth = 100; // Increase image width (mm)
+  const imgHeight = 100; // Adjust height if needed
+  const centerX = (pageWidth - imgWidth) / 2;
+
+  pdf.addImage(img, format, centerX, y, imgWidth, imgHeight);
+  y += imgHeight + 10;
+}
 
       const imgProps = pdf.getImageProperties(imgData);
       const contentWidth = pdfWidth - 20;
@@ -227,17 +232,17 @@ export default function GemStoneFormTabs() {
     }
   };
 
-  const handleEditItem = (item) => {
-    if (item.type === "sales") {
-      setSalesFormData(item);
-      setTab(0);
-    } else {
-      setCustomerFormData(item);
-      setTab(1);
-      setEditIndex(item._id);
-    }
-  };
-
+const handleEditItem = (item) => {
+  if (savedTypeTab === 0) {
+    setSalesFormData(item);
+    setTab(0);
+    setEditIndex(item._id);
+  } else {
+    setCustomerFormData(item);
+    setTab(1);
+    setEditIndex(item._id);
+  }
+};
   return (
     <Box p={3}>
       <Tabs value={tab} onChange={(e, val) => setTab(val)} centered>
