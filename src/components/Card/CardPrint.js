@@ -51,7 +51,7 @@ const handleSave = async () => {
   try {
     // Check if the certificateNo already exists
     const existing = await axios.get(
-      `http://localhost:5000/api/products/by-certificate/${data.certificateNo}`
+      `http://18.60.181.218:4019/api/products/by-certificate/${data.certificateNo}`
     );
 
     if (existing.data) {
@@ -72,7 +72,7 @@ const handleSave = async () => {
       ...data,
     };
 
-    await axios.post("http://localhost:5000/api/products", payload);
+    await axios.post("http://18.60.181.218:4019/api/products", payload);
     alert("Card saved successfully!");
   } catch (err) {
     console.error(err);
@@ -89,7 +89,7 @@ const handleSave = async () => {
     if (data.certificateNo?.length >= 3) {
       const fetchData = debounce(async () => {
         try {
-          const res = await axios.get(`http://localhost:5000/api/products/by-certificate/${data.certificateNo}`);
+          const res = await axios.get(`http://18.60.181.218:4019/api/products/by-certificate/${data.certificateNo}`);
           const fetchedData = res.data;
           delete fetchedData._id;
           delete fetchedData.__v;

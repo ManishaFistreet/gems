@@ -19,7 +19,7 @@ export default function PrintableDetails({ formData, type }) {
 
   return (
     <Box p={3} sx={{ fontSize: "30px", color: "#000", width: "100%" }}>
-      <Typography variant="h5" gutterBottom>{type === "sales" ? "Sales Details" : "Customer Details"}</Typography>
+      <Typography variant="h4" gutterBottom>{type === "sales" ? "Sales Details" : "Customer Details"}</Typography>
       <Divider sx={{ my: 2 }} />
 
       <Typography sx={{fontSize:"30px"}}><strong>Item Name:</strong> {item_name}</Typography>

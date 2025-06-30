@@ -159,8 +159,8 @@ export default function GemStoneFormTabs() {
     : "JPEG";
 
   const pageWidth = pdf.internal.pageSize.getWidth();
-  const imgWidth = 100; // Increase image width (mm)
-  const imgHeight = 100; // Adjust height if needed
+  const imgWidth = 35; // Increase image width (mm)
+  const imgHeight = 35; // Adjust height if needed
   const centerX = (pageWidth - imgWidth) / 2;
 
   pdf.addImage(img, format, centerX, y, imgWidth, imgHeight);
@@ -194,8 +194,8 @@ export default function GemStoneFormTabs() {
     const isSales = tab === 0;
 
     const endpoint = isSales
-      ? "http://localhost:5000/api/sales"
-      : "http://localhost:5000/api/customers";
+       ? "http://18.60.181.218:4019/api/sales"
+      : "http://18.60.181.218:4019/api/customers";
 
     try {
       if (!isSales && editIndex !== null) {
@@ -222,8 +222,8 @@ export default function GemStoneFormTabs() {
     try {
       const endpoint =
         type === "sales"
-          ? "http://localhost:5000/api/sales"
-          : "http://localhost:5000/api/customers";
+          ? "http://18.60.181.218:4019/api/sales"
+          : "http://18.60.181.218:4019/api/customers";
 
       const res = await axios.get(endpoint);
       setSavedItems(res.data);

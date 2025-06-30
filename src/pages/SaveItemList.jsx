@@ -39,7 +39,7 @@ export default function SavedItemsList({ type, onEdit }) {
 
   const handleDelete = async (id) => {
     try {
-      const endpoint = `http://localhost:5000/api/customers/${id}`;
+      const endpoint = `http://18.60.181.218:4019/api/customers/${id}`;
       await axios.delete(endpoint);
       setSavedItems((prev) => prev.filter((item) => item._id !== id));
     } catch (err) {
