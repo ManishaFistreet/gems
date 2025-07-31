@@ -17,7 +17,7 @@ export default function GemStoneFormTabs() {
   const [savedTypeTab, setSavedTypeTab] = useState(0);
   const [savedItems, setSavedItems] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
-  const baseURL = "http://localhost:5000/api";
+  const baseURL = process.env.REACT_APP_API_BASE || 'http://localhost:5000/api';
   const initialForm = {
     stones: [{ name: "", category: "", weight: "", quantity: "", price: "" }],
     gross_weight: "",

@@ -19,7 +19,7 @@ export default function SavedItemsList({ type, onEdit }) {
   const [savedItems, setSavedItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const baseurl = "http://localhost:5000/api";
+  const baseurl = process.env.REACT_APP_API_BASE || 'http://localhost:5000/api';
 
   useEffect(() => {
     const fetchItems = async () => {

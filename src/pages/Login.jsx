@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './login.css';
 
-const baseUrl = 'http://localhost:5000/api/auth';
+const baseUrl = process.env.REACT_APP_API_BASE || 'http://localhost:5000/api';
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -15,7 +15,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch(`${baseUrl}/login`, {
+      const response = await fetch(`${baseUrl}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

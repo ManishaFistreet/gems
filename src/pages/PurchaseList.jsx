@@ -13,13 +13,15 @@ import DownloadIcon from "@mui/icons-material/Download";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
+const baseUrl = process.env.REACT_APP_API_BASE || 'http://localhost:5000/api';
+
 export default function PurchaseList() {
   const [customerItems, setCustomerItems] = useState([]);
   const cardRefs = useRef({});
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/customers/purchased-customers")
+      .get(`${baseUrl}/customers/purchased-customers`)
       .then((res) => {
         const data = Array.isArray(res.data) ? res.data : [res.data];
         setCustomerItems(data);
