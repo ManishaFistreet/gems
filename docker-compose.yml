@@ -1,8 +1,0 @@
-version: '3.8'
-
-services:
-  frontend:
-    build: .
-    ports:
-      - "4006:80"  # expose on port 4006
-    restart: always
